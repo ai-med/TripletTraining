@@ -1,0 +1,23 @@
+_target_: addiagnosis.modules.vicreg.VICReg_Module
+lr: 0.1
+end_lr: 0.002 # as in the paper, lr = 0.2 * bs/256, end_lr = 0.002
+weight_decay: 1.0e-6
+pretrained_model: null
+batch_size: 128
+encoder_out_dim: 512
+z_dim: 2048
+lambda_in: 25.0
+lambda_va: 25.0
+lambda_co: 1.0
+warmup_epochs: 10
+
+net:
+  _target_: addiagnosis.models.resnet.SingleResNet
+  in_channels: 1
+  n_blocks: 6
+  bn_momentum: 0.05
+  n_basefilters: 16
+  dropout_rate: 0.2
+  resnet_version: 'base' 
+  remain_downsample_steps: null
+  

@@ -1,0 +1,48 @@
+_target_: addiagnosis.modules.dira.Dira_Module
+lr: 1e-2
+lr_d: 1e-3
+weight_decay: 1.0e-6
+pretrained_model: null 
+pretrained_dir_model: null 
+batch_size: 64
+encoder_out_dim: 512
+z_dim: 2048
+lambda_coeff: 0.005
+warmup_epochs: 10
+lamda_dis: 0.1
+lamda_res: 10.0
+lamda_adv: 10.0
+lamda_class: 0
+dis_mode: 'barlow' # 'SupCon' 
+adv_loss_type: 'BCE'
+opt_g: 'lars'
+opt_d: 'lars'
+sche_g: 'cosine'
+sche_d: 'cosine'
+train_modules: 'dira'
+with_classification: null #'diagnosis_with_mci'
+T: 0.1
+
+encoder:
+  _target_: addiagnosis.models.resnet.BaseResNet
+  in_channels: 1
+  n_blocks: 6
+  bn_momentum: 0.05
+  n_basefilters: 16
+  resnet_version: 'base' 
+  remain_downsample_steps: null
+
+decoder:
+  _target_: addiagnosis.models.unet.Decoder_BaseResNet
+  encoder_in_channels: 1
+  n_blocks: 6
+  bn_momentum: 0.05
+  n_basefilters: 16
+  resnet_version: 'base' 
+  remain_downsample_steps: null
+  center: True
+
+discriminator:
+  _target_: addiagnosis.models.discriminator.Discriminator
+  channels: 1
+  

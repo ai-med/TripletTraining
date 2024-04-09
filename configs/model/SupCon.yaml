@@ -1,0 +1,20 @@
+_target_: addiagnosis.modules.sup_con_learning.Sup_Con_Learning_Module
+lr: 0.15 # 0.3 * bs/256 as in the SimCLR paper
+end_lr: 0.00015 # 0.00001
+weight_decay: 1.0e-6
+pretrained_model: null 
+batch_size: 128
+encoder_out_dim: 512
+z_dim: 128
+method: 'SimCLR' # 'SupCon' for supervised contrastive learning or 'SimCLR' for SimCLR
+T: 0.5
+
+net:
+  _target_: addiagnosis.models.resnet.BaseResNet
+  in_channels: 1
+  n_blocks: 6
+  bn_momentum: 0.05
+  n_basefilters: 16
+  resnet_version: 'base' 
+  remain_downsample_steps: null
+  

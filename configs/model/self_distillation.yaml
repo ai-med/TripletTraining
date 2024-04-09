@@ -1,0 +1,37 @@
+_target_: addiagnosis.modules.self_distillation.Self_Distillation_Module
+pretrained_model: /path/to/SSL/checkpoints/last.ckpt
+lr: 0.01
+batch_size: 128
+weight_decay: 1.5e-6
+out_class_num: 3
+class_loss_type: 'CE' # 'multilabel_BCE', 'CE'
+distill_loss_type: 'kd'
+kl_T: 8
+weight_class_loss: 0.999
+weight_div_loss: 0.001
+weight_distill_loss: 0
+is_teacher_unsupervised: True
+
+net:
+  _target_: addiagnosis.models.resnet.SingleResNet
+  in_channels: 1
+  n_outputs: 3
+  n_blocks: 6
+  bn_momentum: 0.05
+  n_basefilters: 16
+  dropout_rate: 0.5
+  resnet_version: 'base' 
+  remain_downsample_steps: null
+  num_mlp: 2
+
+stu_net:
+  _target_: addiagnosis.models.resnet.SingleResNet
+  in_channels: 1
+  n_outputs: 3
+  n_blocks: 6
+  bn_momentum: 0.05
+  n_basefilters: 16
+  dropout_rate: 0.5
+  resnet_version: 'base' 
+  remain_downsample_steps: null
+  num_mlp: 2

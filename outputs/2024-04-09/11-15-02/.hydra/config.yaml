@@ -1,0 +1,78 @@
+data_dir: /path/to/data
+seed: 0
+name: Barlow_TripletTraining
+callbacks:
+  model_checkpoint:
+    _target_: pytorch_lightning.callbacks.ModelCheckpoint
+    monitor: val/loss
+    mode: min
+    save_top_k: 0
+    save_last: true
+    dirpath: checkpoints/
+    filename: epoch_{epoch:03d}-loss
+  learning_rate_monitor:
+    _target_: pytorch_lightning.callbacks.LearningRateMonitor
+    logging_interval: epoch
+    log_momentum: false
+datamodule:
+  _target_: addiagnosis.datamodules.adni_nifd.ADNI_NIFDDataModule
+  data_path: /path/to/data
+  data_list: /path/to/data_list
+  batch_size: 128
+  num_workers: 12
+  num_class: 3
+  seed: 0
+  resize: 55
+model:
+  _target_: addiagnosis.modules.self_distillation.Self_Distillation_Module
+  pretrained_model: /path/to/SSL/checkpoints/last.ckpt
+  lr: 0.01
+  batch_size: 128
+  weight_decay: 1.5e-06
+  out_class_num: 3
+  class_loss_type: CE
+  distill_loss_type: kd
+  kl_T: 8
+  weight_class_loss: 0.999
+  weight_div_loss: 0.001
+  weight_distill_loss: 0
+  is_teacher_unsupervised: true
+  net:
+    _target_: addiagnosis.models.resnet.SingleResNet
+    in_channels: 1
+    n_outputs: 3
+    n_blocks: 6
+    bn_momentum: 0.05
+    n_basefilters: 16
+    dropout_rate: 0.5
+    resnet_version: base
+    remain_downsample_steps: null
+    num_mlp: 2
+  stu_net:
+    _target_: addiagnosis.models.resnet.SingleResNet
+    in_channels: 1
+    n_outputs: 3
+    n_blocks: 6
+    bn_momentum: 0.05
+    n_basefilters: 16
+    dropout_rate: 0.5
+    resnet_version: base
+    remain_downsample_steps: null
+    num_mlp: 2
+logger:
+  tensorboard:
+    _target_: pytorch_lightning.loggers.tensorboard.TensorBoardLogger
+    save_dir: logs/
+    name: null
+    version: ${name}
+    log_graph: false
+    default_hp_metric: true
+    prefix: ''
+trainer:
+  _target_: pytorch_lightning.Trainer
+  accelerator: gpu
+  min_epochs: 1
+  max_epochs: 100
+  detect_anomaly: true
+  log_every_n_steps: 25
+  resume_from_checkpoint: null

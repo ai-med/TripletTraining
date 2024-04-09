@@ -1,0 +1,10 @@
+_target_: addiagnosis.datamodules.adni_nifd.ADNI_NIFDDataModule
+
+data_path: /path/to/data
+data_list: /path/to/data_list
+batch_size: 128
+num_workers: 12
+num_class: 3
+seed: 0
+resize: 55
+# is_ssl: False

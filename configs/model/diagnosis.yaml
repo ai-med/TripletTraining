@@ -1,0 +1,22 @@
+_target_: addiagnosis.modules.diagnosis.DiagnosisModule
+lr: 0.01
+pretrained_model: Null
+weight_decay: 0.00001
+out_class_num: 3
+weighted_loss: True
+loss_type: 'CE' # 'multilabel_BCE'
+is_regression: False
+batch_size: 128
+
+net:
+  _target_: addiagnosis.models.resnet.SingleResNet
+  in_channels: 1
+  n_outputs: 3
+  n_blocks: 6
+  bn_momentum: 0.05
+  n_basefilters: 16
+  dropout_rate: 0.5
+  resnet_version: 'base'
+  remain_downsample_steps: null
+  num_mlp: 2
+  

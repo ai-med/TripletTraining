@@ -1,0 +1,7 @@
+_target_: addiagnosis.datamodules.uk_biobank.UKBioBankDataModule
+
+path: /path/to/UKBiobank
+batch_size: 128
+num_workers: 12
+is_ssl: True
+resize_height: 55
