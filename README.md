@@ -1,13 +1,13 @@
 # TripletTraining
 
-This repository contains a PyTorch implementation of the paper [From Barlow Twins to Triplet Training: Differentiating Dementia with Limited Data](https://openreview.net/forum?id=7iW2nuL2lS), which is published in [MIDL](https://2024.midl.io/) 2024.
+This repository contains a PyTorch implementation of the paper 🧠 [From Barlow Twins to Triplet Training: Differentiating Dementia with Limited Data](https://openreview.net/forum?id=7iW2nuL2lS), which is published in [MIDL](https://2024.midl.io/) 2024. 
 
 <p align="center">
   <img src="img/Triplet_training.png" />
 </p>
 
 
-If you find this repository useful, please consider giving a star and citing the paper:
+If you find this repository useful, please consider giving a star 🌟 and citing the paper:
 
 ```bibtex
 @inproceedings{li2024triplet,
