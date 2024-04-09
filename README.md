@@ -24,17 +24,16 @@ We used data from [UK Biobank](https://www.ukbiobank.ac.uk/), [Alzheimer's Disea
 
 1. First level: A unique identifier, e.g. image ID.
 2. The second level always has the following entries:
-    i. A group named 'MRI/T1', containing the T1-weighted 3D MRI data.
-    ii. A string attribute 'DX' containing the diagnosis labels: 'CN', 'AD' or 'FTD', if available.
-    iii. A scalar attribute 'RID' with the patient ID, if available.
-    iv. Additional attributes depending on the task, such as 'Gender' and 'Age', if available.
+    1. A group named `MRI/T1`, containing the T1-weighted 3D MRI data.
+    2. A string attribute `DX` containing the diagnosis labels: `CN`, `AD` or `FTD`, if available.
+    3. A scalar attribute `RID` with the patient ID, if available.
+    4. Additional attributes depending on the task, such as `Sex` and `Age`, if available.
 
 ## Installation
 
-1. Install [Miniconda3](https://conda.io/en/latest/miniconda.html#latest-miniconda-installer-links)
-2. Create environment: `conda env create -n triplet --file requirements.yaml`
-3. Activate environment: `conda activate triplet`
-4. Install `addiagnosis` package in development mode: `pip install --no-deps -e .`
+1. Create environment: `conda env create -n triplet --file requirements.yaml`
+2. Activate environment: `conda activate triplet`
+3. Install `addiagnosis` package in development mode: `pip install --no-deps -e .`
 
 ## Usage
 
