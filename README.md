@@ -10,12 +10,21 @@ This repository contains a PyTorch implementation of the paper 🧠 [From Barlow
 If you find this repository useful, please consider giving a star 🌟 and citing the paper:
 
 ```bibtex
-@inproceedings{li2024triplet,
-  title={From Barlow Twins to Triplet Training: Differentiating Dementia with Limited Data},
-  author={Li, Yitong and Wolf, Tom Nuno and P{\"o}lsterl, Sebastian and Yakushev, Igor and Hedderich, Dennis M and Wachinger, Christian},
-  booktitle={Medical Imaging with Deep Learning},
-  year={2024}
+@InProceedings{li24triplet,
+  title = 	 {From Barlow Twins to Triplet Training: Differentiating Dementia with Limited Data},
+  author =       {Li, Yitong and Wolf, Tom Nuno and P\"olsterl, Sebastian and Yakushev, Igor and Hedderich, Dennis M. and Wachinger, Christian},
+  booktitle = 	 {Proceedings of The 7nd International Conference on Medical Imaging with Deep Learning},
+  pages = 	 {888--902},
+  year = 	 {2024},
+  editor = 	 {Burgos, Ninon and Petitjean, Caroline and Vakalopoulou, Maria and Christodoulidis, Stergios and Coupe, Pierrick and Delingette, Hervé and Lartizien, Carole and Mateus, Diana},
+  volume = 	 {250},
+  series = 	 {Proceedings of Machine Learning Research},
+  month = 	 {03--05 Jul},
+  publisher =    {PMLR},
+  pdf = 	 {https://raw.githubusercontent.com/mlresearch/v250/main/assets/li24a/li24a.pdf},
+  url = 	 {https://proceedings.mlr.press/v250/li24a.html},
 }
+
 ```
 
 ## Data
